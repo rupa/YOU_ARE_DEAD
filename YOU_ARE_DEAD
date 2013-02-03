@@ -24,7 +24,7 @@ you_win() {
 
 game_over() {
     printf "\nLEVEL $LEVEL, SCORE $SCORE. YOU ARE DEAD.\n"
-    exit
+    exit 1
 }
 
 build_dungeon() {
