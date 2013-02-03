@@ -1,4 +1,6 @@
-~$ ./YOU_ARE_DEAD 
+$ ./YOU_ARE_DEAD -h
+KEYS: WASD. YOU ARE DEAD.
+$ ./YOU_ARE_DEAD 
    .     ~ .        ..   . ~~  ~  ~   ~~          .~  ~   .        .~    .    ~ 
 LEVEL 2
               x.       .  .   .  ~ ~     ~  ~   .        ~ ~. ~ ~.  . .   . .~  
