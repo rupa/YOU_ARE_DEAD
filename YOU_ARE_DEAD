@@ -68,8 +68,8 @@ while :; do
     [ "$THING" != "" -a "$THING" != " " -a "$OLDYOU" != "$THING" ] && game_over
 
     [ $((SCORE % $COLS)) = 0 ] && {
+        [ "$MAX_LEVEL" -a "$LEVEL" -ge "$MAX_LEVEL" ] && you_win
         LEVEL=$((LEVEL + 1))
-        [ "$MAX_LEVEL" -a "$LEVEL" -gt "$MAX_LEVEL" ] && you_win
         printf "$DUNGEON\nLEVEL $LEVEL\n"
         build_dungeon
     }
