@@ -29,8 +29,10 @@ game_over() {
 
 build_dungeon() {
     DUNGEON=" "
-    for x in $(seq 2 $(tput cols)); do
-        DUNGEON="${CHOICES:$((RANDOM % ${#CHOICES})):1}$DUNGEON"
+    local COUNTER=2
+    while [ $COUNTER -le $(tput cols) ]; do
+        DUNGEON="$DUNGEON${CHOICES:$((RANDOM % ${#CHOICES})):1}"
+        COUNTER=$((COUNTER + 1));
     done
 }
 
