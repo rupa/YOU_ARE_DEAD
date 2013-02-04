@@ -5,11 +5,28 @@ YOU=x
 LEVEL=1
 MAX_LEVEL=10
 SCORE=0
+w='w'
+a='a'
+s='s'
+d='d'
+DVORAK=false
+
+shift_keys() {
+    if [[ $DVORAK == false ]]
+    then
+        w='e'; a='s'; s='d'; d='f';
+    else
+        w='.'; a='o'; s='e'; d='u';
+    fi
+}
 
 for x; do case $x in
     -[0-9]) MAX_LEVEL=${x:1};;
     -e) unset MAX_LEVEL;;
-    -h) echo "KEYS: WASD. YOU ARE DEAD."; exit;;
+    -d) w=','; a='a'; s='o'; d='e';
+        DVORAK=true;;
+    -s) shift_keys;;
+    -h) echo "KEYS: $w$a$s$d. YOU ARE DEAD." | tr '[:lower:]' '[:upper:]'; exit;;
 esac; shift; done
 
 trap 'tput cnorm -- normal' EXIT
@@ -49,13 +66,13 @@ while :; do
     read -s -n 1
 
     case "$REPLY" in
-        w) YOU='~';;
-        a) YOU=x
+        $w) YOU='~';;
+        $a) YOU=x
            [ $((SCORE % $COLS)) = 0 ] && game_over
            SCORE=$((SCORE - 1))
            ;;
-        s) YOU=.;;
-        d) YOU=x
+        $s) YOU=.;;
+        $d) YOU=x
            SCORE=$((SCORE + 1))
            F=1
            ;;
