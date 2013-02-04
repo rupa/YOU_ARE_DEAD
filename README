@@ -5,3 +5,15 @@ $ ./YOU_ARE_DEAD
 LEVEL 2
               x.       .  .   .  ~ ~     ~  ~   .        ~ ~. ~ ~.  . .   . .~  
 LEVEL 2, SCORE 95. YOU ARE DEAD.
+
+
+From Hacker News post by roryokane;
+
+    The missing instructions:
+    You are the ‘x’. Your immediate goal is to beat the level by reaching the right side. Press D to walk right one step. You can press A to step back left, but there is never a reason to do so.
+    The ‘~’ and ‘.’ are obstacles; you will die if you walk onto them normally. To safely step onto the obstacles, press W or S to turn your x temporarily into the same character as the obstacle – W for ‘~’, S for ‘.’. Then, when you move right onto the obstacle, it will be removed, and your character will be an ‘x’ again.
+    When you walk past the right edge of the level, you are arrive at the left side of a new level, with randomly-generated obstacles and spaces. When you die, your score is equal to how many steps right past the start you are.
+    If you are careful not to step right unless you’ve transformed yourself to match any obstacle to your right, you cannot lose the game. Beating the last level, level 10, is simply a test of perseverance and thinking before you step.
+    Some tips:
+    Resize your terminal window to change the length of each level. Note that beating a level provides no bonuses to your score. The maximum possible score is the width of a level times 10, so make your window wide if you’re aiming for that.
+    It does no harm to transform yourself before stepping on an empty space. Thus, if you have a series of obstacles such as ‘~ ~~ ~’, just repeatedly press WD to safely step across. This is easier than deciding whether to press D or WD before each step.
