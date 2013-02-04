@@ -5,3 +5,12 @@ $ ./YOU_ARE_DEAD
 LEVEL 2
               x.       .  .   .  ~ ~     ~  ~   .        ~ ~. ~ ~.  . .   . .~  
 LEVEL 2, SCORE 95. YOU ARE DEAD.
+
+NOW WITH SHIFTED AND DVORAK KEYS
+
+$ ./YOU_ARE_DEAD -s -h
+KEYS: ESDF. YOU ARE DEAD.
+$ ./YOU_ARE_DEAD -d -h
+KEYS: ,AOE. YOU ARE DEAD.
+$ ./YOU_ARE_DEAD -d -s -h
+KEYS: .OEU. YOU ARE DEAD.
