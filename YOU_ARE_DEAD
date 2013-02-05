@@ -16,9 +16,9 @@ DVORAK MODE:
     YOU_ARE_DEAD_KEYS=",aoe" ./$(basename $0)
 
 PROTIP TO PREVENT HORRIBLE ACCIDENTS:
-   # you must beat a level before you can execute scary_function
-   while :; do ./$(basename $0) -1 && break; done
-   scary_function
+    # you must beat a level before you can execute scary_function
+    while :; do ./$(basename $0) -1 && break; done
+    scary_function
 !
 }
 
