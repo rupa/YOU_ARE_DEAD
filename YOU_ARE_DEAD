@@ -22,7 +22,6 @@ PROTIP TO PREVENT HORRIBLE ACCIDENTS:
 !
 }
 
-YOU=x
 LEVEL=1
 MAX_LEVEL=10
 SCORE=0
@@ -36,7 +35,13 @@ esac; shift; done
 trap 'tput cnorm -- normal' EXIT
 tput civis -- invisible
 
-CHOICES="rps      "
+X=x
+R='.'
+P='~'
+S='<'
+
+YOU=x
+CHOICES="$R$P$S      "
 
 you_win() {
     printf "$DUNGEON\nLEVEL $LEVEL, SCORE $SCORE. YOU WIN. YOU ARE DEAD.\n"
@@ -69,19 +74,19 @@ while :; do
     read -s -n 1
 
     case "$REPLY" in
-        ${YOU_ARE_DEAD_KEYS:0:1}) YOU=r;;
-        ${YOU_ARE_DEAD_KEYS:1:1}) YOU=p;;
-        ${YOU_ARE_DEAD_KEYS:2:1}) YOU=s;;
-        ${YOU_ARE_DEAD_KEYS:3:1}) YOU=x; SCORE=$((SCORE + 1));;
+        ${YOU_ARE_DEAD_KEYS:0:1}) YOU="$R";;
+        ${YOU_ARE_DEAD_KEYS:1:1}) YOU="$P";;
+        ${YOU_ARE_DEAD_KEYS:2:1}) YOU="$S";;
+        ${YOU_ARE_DEAD_KEYS:3:1}) YOU="$X"; SCORE=$((SCORE + 1));;
     esac
 
-    [ "$YOU" = "x" ] || continue
+    [ "$YOU" = "$X" ] || continue
 
     THING=${DUNGEON:$((SCORE % $COLS)):1}
 
     case $THING$OLDYOU in
-        rs|pr|sp|rx|px|sx) game_over;;
-        rr|ss|pp) SCORE=$((SCORE - 1));;
+        $R$S|$P$R|$S$P|$R$X|$P$X|$S$X) game_over;;
+        $R$R|$S$S|$P$P) SCORE=$((SCORE - 1));;
     esac
 
     [ $((SCORE % $COLS)) = 0 ] && {
