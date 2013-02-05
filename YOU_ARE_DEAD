@@ -1,5 +1,24 @@
 #!/bin/bash
-# YOU ARE DEAD. by rupa. WTFPL
+# YOU ARE DEAD. by rupa 2013. WTFPL.
+
+usage() {
+cat<<!
+$(basename $0) [options]
+
+KEYS: WASD. YOU ARE DEAD.
+
+-[0-9] SHORT GAME.
+    -e ENDLESS MODE.
+
+DVORAK MODE:
+    YOU_ARE_DEAD_KEYS=",aoe" ./$(basename $0)
+
+PROTIP TO PREVENT HORRIBLE ACCIDENTS:
+   # you must beat a level before you can execute_scary_function
+   while :; do ./$(basename $0) -1 && break; done
+   execute_scary_function
+!
+}
 
 YOU=x
 LEVEL=1
@@ -11,7 +30,7 @@ SCORE=0
 for x; do case $x in
     -[0-9]) MAX_LEVEL=${x:1};;
     -e) unset MAX_LEVEL;;
-    -h) echo "KEYS: WASD. YOU ARE DEAD."; exit;;
+    -h) usage; exit;;
 esac; shift; done
 
 trap 'tput cnorm -- normal' EXIT
