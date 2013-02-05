@@ -10,9 +10,9 @@ DVORAK MODE:
     YOU_ARE_DEAD_KEYS=",aoe" ./YOU_ARE_DEAD
 
 PROTIP TO PREVENT HORRIBLE ACCIDENTS:
-   # you must beat a level before you can execute_scary_function
+   # you must beat a level before you can execute scary_function
    while :; do ./YOU_ARE_DEAD -1 && break; done
-   execute_scary_function
+   scary_function
 
 $ ./YOU_ARE_DEAD 
    .     ~ .        ..   . ~~  ~  ~   ~~          .~  ~   .        .~    .    ~ 
