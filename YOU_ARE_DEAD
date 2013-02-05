@@ -36,7 +36,7 @@ esac; shift; done
 trap 'tput cnorm -- normal' EXIT
 tput civis -- invisible
 
-CHOICES="~.      "
+CHOICES="rps      "
 
 you_win() {
     printf "$DUNGEON\nLEVEL $LEVEL, SCORE $SCORE. YOU WIN. YOU ARE DEAD.\n"
@@ -62,7 +62,6 @@ build_dungeon
 while :; do
 
     COLS=$(tput cols)
-    F=0
     OLDYOU=$YOU
 
     printf "$DUNGEON\r%*s$YOU\r" $((SCORE % $COLS))
@@ -70,25 +69,20 @@ while :; do
     read -s -n 1
 
     case "$REPLY" in
-        ${YOU_ARE_DEAD_KEYS:0:1}) YOU='~';;
-        ${YOU_ARE_DEAD_KEYS:1:1}) YOU=x
-           [ $((SCORE % $COLS)) = 0 ] && game_over
-           SCORE=$((SCORE - 1))
-           ;;
-        ${YOU_ARE_DEAD_KEYS:2:1}) YOU=.;;
-        ${YOU_ARE_DEAD_KEYS:3:1}) YOU=x
-           SCORE=$((SCORE + 1))
-           F=1
-           ;;
+        ${YOU_ARE_DEAD_KEYS:0:1}) YOU=r;;
+        ${YOU_ARE_DEAD_KEYS:1:1}) YOU=p;;
+        ${YOU_ARE_DEAD_KEYS:2:1}) YOU=s;;
+        ${YOU_ARE_DEAD_KEYS:3:1}) YOU=x; SCORE=$((SCORE + 1));;
     esac
 
-    [ $SCORE -lt 0 ] && game_over
-
-    [ "$F" = 1 ] || continue
+    [ "$YOU" = "x" ] || continue
 
     THING=${DUNGEON:$((SCORE % $COLS)):1}
 
-    [ "$THING" != "" -a "$THING" != " " -a "$OLDYOU" != "$THING" ] && game_over
+    case $THING$OLDYOU in
+        rs|pr|sp|rx|px|sx) game_over;;
+        rr|ss|pp) SCORE=$((SCORE - 1));;
+    esac
 
     [ $((SCORE % $COLS)) = 0 ] && {
         [ "$MAX_LEVEL" -a "$LEVEL" -ge "$MAX_LEVEL" ] && you_win
