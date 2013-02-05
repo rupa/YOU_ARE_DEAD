@@ -6,6 +6,8 @@ LEVEL=1
 MAX_LEVEL=10
 SCORE=0
 
+[ "$YOU_ARE_DEAD_KEYS" ] || YOU_ARE_DEAD_KEYS="wasd"
+
 for x; do case $x in
     -[0-9]) MAX_LEVEL=${x:1};;
     -e) unset MAX_LEVEL;;
@@ -49,13 +51,13 @@ while :; do
     read -s -n 1
 
     case "$REPLY" in
-        w) YOU='~';;
-        a) YOU=x
+        ${YOU_ARE_DEAD_KEYS:0:1}) YOU='~';;
+        ${YOU_ARE_DEAD_KEYS:1:1}) YOU=x
            [ $((SCORE % $COLS)) = 0 ] && game_over
            SCORE=$((SCORE - 1))
            ;;
-        s) YOU=.;;
-        d) YOU=x
+        ${YOU_ARE_DEAD_KEYS:2:1}) YOU=.;;
+        ${YOU_ARE_DEAD_KEYS:3:1}) YOU=x
            SCORE=$((SCORE + 1))
            F=1
            ;;
