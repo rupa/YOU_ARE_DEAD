@@ -1,11 +1,13 @@
 #!/bin/bash
 # YOU ARE DEAD. by rupa 2013. WTFPL.
 
+[ "$YOU_ARE_DEAD_KEYS" ] || YOU_ARE_DEAD_KEYS="wasd"
+
 usage() {
 cat<<!
 $(basename $0) [options]
 
-KEYS: WASD. YOU ARE DEAD.
+KEYS: $YOU_ARE_DEAD_KEYS. YOU ARE DEAD.
 
 -[0-9] SHORT GAME.
     -e ENDLESS MODE.
@@ -24,8 +26,6 @@ YOU=x
 LEVEL=1
 MAX_LEVEL=10
 SCORE=0
-
-[ "$YOU_ARE_DEAD_KEYS" ] || YOU_ARE_DEAD_KEYS="wasd"
 
 for x; do case $x in
     -[0-9]) MAX_LEVEL=${x:1};;

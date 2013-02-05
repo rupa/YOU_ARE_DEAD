@@ -1,7 +1,7 @@
 $ ./YOU_ARE_DEAD -h
 YOU_ARE_DEAD [options]
 
-KEYS: WASD. YOU ARE DEAD.
+KEYS: wasd. YOU ARE DEAD.
 
 -[0-9] SHORT GAME.
     -e ENDLESS MODE.
