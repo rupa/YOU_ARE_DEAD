@@ -3,7 +3,7 @@ YOU_ARE_DEAD [options]
 
 KEYS: wasd. YOU ARE DEAD.
 
--[0-9] SHORT GAME.
+-[1-9] SHORT GAME.
     -e ENDLESS MODE.
 
 DVORAK MODE:
