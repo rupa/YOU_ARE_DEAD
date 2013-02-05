@@ -27,7 +27,7 @@ MAX_LEVEL=10
 SCORE=0
 
 for x; do case $x in
-    -[0-9]) MAX_LEVEL=${x:1};;
+    -[1-9]) MAX_LEVEL=${x:1};;
     -e) unset MAX_LEVEL;;
     -h|--help) usage; exit;;
 esac; shift; done
