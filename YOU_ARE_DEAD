@@ -86,7 +86,7 @@ while :; do
 
     case $THING$OLDYOU in
         $R$S|$P$R|$S$P|$R$X|$P$X|$S$X) game_over;;
-        $R$R|$S$S|$P$P) SCORE=$((SCORE - 1));;
+        $R$R|$S$S|$P$P) SCORE=$((SCORE - 1)); continue;;
     esac
 
     [ $((SCORE % $COLS)) = 0 ] && {
