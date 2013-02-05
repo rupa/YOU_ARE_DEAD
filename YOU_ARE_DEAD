@@ -88,7 +88,9 @@ while :; do
 
     THING=${DUNGEON:$((SCORE % $COLS)):1}
 
-    [ "$THING" != "" -a "$THING" != " " -a "$OLDYOU" != "$THING" ] && game_over
+    case $THING$OLDYOU in
+        '~x'|'~.'|'.x'|'.~') game_over;;
+    esac
 
     [ $((SCORE % $COLS)) = 0 ] && {
         [ "$MAX_LEVEL" -a "$LEVEL" -ge "$MAX_LEVEL" ] && you_win
