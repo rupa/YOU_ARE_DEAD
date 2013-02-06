@@ -78,6 +78,7 @@ while :; do
         ${YOU_ARE_DEAD_KEYS:1:1}) YOU="$P";;
         ${YOU_ARE_DEAD_KEYS:2:1}) YOU="$S";;
         ${YOU_ARE_DEAD_KEYS:3:1}) YOU="$X"; SCORE=$((SCORE + 1));;
+        *) continue;;
     esac
 
     [ "$YOU" = "$X" ] || continue
