@@ -80,6 +80,7 @@ while :; do
            SCORE=$((SCORE + 1))
            F=1
            ;;
+        *) continue;;
     esac
 
     [ $SCORE -lt 0 ] && game_over
