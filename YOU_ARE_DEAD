@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # YOU ARE DEAD. by rupa 2013. WTFPL.
 
-[ "$YOU_ARE_DEAD_KEYS" ] || YOU_ARE_DEAD_KEYS="swad"
+[ "$YOU_ARE_DEAD_KEYS" ] || YOU_ARE_DEAD_KEYS="wasd"
 
 usage() {
 cat<<!
