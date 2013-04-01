@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # YOU ARE DEAD. by rupa 2013. WTFPL.
 
-[ "$YOU_ARE_DEAD_KEYS" ] || YOU_ARE_DEAD_KEYS="wasd"
+[ "$YOU_ARE_DEAD_KEYS" ] || YOU_ARE_DEAD_KEYS="swad"
 
 usage() {
 cat<<!
@@ -45,20 +45,19 @@ YOU=x
 CHOICES="$R$P$S      "
 
 duration() {
-    SECONDS=$(($(date +%s)-TIME))
-    ((h=$SECONDS/3600))
-    ((m=($SECONDS%3600)/60))
-    ((s=$SECONDS%60))
+    h=$((SECONDS/3600))
+    m=$(((SECONDS%3600)/60))
+    s=$((SECONDS%60))
     printf "%02d:%02d:%02d" $h $m $s
 }
 
 you_win() {
-    printf "$DUNGEON\nLEVEL $LEVEL, SCORE $SCORE ($(duration)). YOU WIN. YOU ARE DEAD.\n"
+    printf "$DUNGEON\nLEVEL $LEVEL, SCORE $SCORE $(duration). YOU WIN. YOU ARE DEAD.\n"
     exit
 }
 
 game_over() {
-    printf "\nLEVEL $LEVEL, SCORE $SCORE ($(duration)). YOU ARE DEAD.\n"
+    printf "\nLEVEL $LEVEL, SCORE $SCORE $(duration). YOU ARE DEAD.\n"
     exit 1
 }
 
