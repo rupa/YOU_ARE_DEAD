@@ -25,6 +25,7 @@ PROTIP TO PREVENT HORRIBLE ACCIDENTS:
 LEVEL=1
 MAX_LEVEL=10
 SCORE=0
+TIME="$(date +%s)"
 
 for x; do case $x in
     -[1-9]) MAX_LEVEL=${x:1};;
@@ -43,13 +44,20 @@ S='<'
 YOU=x
 CHOICES="$R$P$S      "
 
+duration() {
+    h=$((SECONDS/3600))
+    m=$(((SECONDS%3600)/60))
+    s=$((SECONDS%60))
+    printf "%02d:%02d:%02d" $h $m $s
+}
+
 you_win() {
-    printf "$DUNGEON\nLEVEL $LEVEL, SCORE $SCORE. YOU WIN. YOU ARE DEAD.\n"
+    printf "$DUNGEON\nLEVEL $LEVEL, SCORE $SCORE $(duration). YOU WIN. YOU ARE DEAD.\n"
     exit
 }
 
 game_over() {
-    printf "\nLEVEL $LEVEL, SCORE $SCORE. YOU ARE DEAD.\n"
+    printf "\nLEVEL $LEVEL, SCORE $SCORE $(duration). YOU ARE DEAD.\n"
     exit 1
 }
 
@@ -93,7 +101,7 @@ while :; do
     [ $((SCORE % $COLS)) = 0 ] && {
         [ "$MAX_LEVEL" -a "$LEVEL" -ge "$MAX_LEVEL" ] && you_win
         LEVEL=$((LEVEL + 1))
-        printf "$DUNGEON\nLEVEL $LEVEL\n"
+        printf "$DUNGEON\nLEVEL $LEVEL ($(duration))\n"
         build_dungeon
     }
 
