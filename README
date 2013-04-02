@@ -9,6 +9,9 @@ KEYS: wasd. YOU ARE DEAD.
 DVORAK MODE:
     YOU_ARE_DEAD_KEYS=",aoe" ./YOU_ARE_DEAD
 
+FIXED LEVELS:
+    SEED=1 ./YOU_ARE_DEAD (always the same topography for given SEED)
+
 PROTIP TO PREVENT HORRIBLE ACCIDENTS:
     # you must beat a level before you can execute scary_function
     while :; do ./YOU_ARE_DEAD -1 && break; done

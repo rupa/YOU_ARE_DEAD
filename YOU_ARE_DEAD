@@ -44,6 +44,8 @@ S='<'
 YOU=x
 CHOICES="$R$P$S      "
 
+[ "$SEED" ] && RANDOM=$SEED
+
 duration() {
     h=$((SECONDS/3600))
     m=$(((SECONDS%3600)/60))
